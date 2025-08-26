@@ -58,3 +58,7 @@ nav { grid-area: nav; background: #6497b1; }
 main { grid-area: main; background: #005b96; color: #fff; }
 aside { grid-area: aside; background: #03396c; color: #fff; }
 footer { grid-area: footer; background: #011f4b; color: #fff; }
+
+#aula 9:#
+https://tailwindcss.com/docs/installation/tailwind-cli
+
