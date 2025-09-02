@@ -62,3 +62,4 @@ footer { grid-area: footer; background: #011f4b; color: #fff; }
 #aula 9:#
 https://tailwindcss.com/docs/installation/tailwind-cli
 
+#aula 10#
