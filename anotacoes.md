@@ -63,3 +63,97 @@ footer { grid-area: footer; background: #011f4b; color: #fff; }
 https://tailwindcss.com/docs/installation/tailwind-cli
 
 #aula 10#
+- javascript ES (pesquisar)
+- w3school
+- assinatura da funçao
+- if - switch/case/ defaut
+- verifique se usuario e senha estao corretos:
+- pra testar resultados no terminal: node _arquivo_.js
+- prompt-sync biblioteca
+-  
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+//verifique se usuario e senha estao corretos:
+let user = "admin";
+let pass = "12345";
+
+function verificar (user, pass) {
+if( user === "admin" && pass === "12345"){
+  console.log("sucesso");
+}else{
+  console.log("falhou");
+}
+};
+
+
+//verificar com base na cor de um semaforo e de pedestre atravessando a rua se posso avançar mau carro
+
+// let semaforoCarros = (verde, amarelo, vermelho);
+// let faixaPedestre = (verde, vermelho);
+// // let temPedestre = ()
+
+// function avançar (faixaPedestre, semaforoCarros) =>{
+//   if {faixaPedestre === verde
+//     return false;
+
+//   } else {
+//     return true
+//   };
+// };
+
+let cor = "verde";
+let pedestreAtravessando = false;
+
+if (cor === "verde" && !pedestreAtravessando === false){
+  console.log("pode passar");
+}else{
+  console.log("pare!");
+};
+
+</script>
+
+</body>
+</html>
+
+
+// console.log("testando")
+
+//verificar se é maior de idade
+// let idade = 18;
+// if (idade <= 17){
+//     console.log("menor de idade")
+// }else{
+//     console.log("maior de idade")
+// };
+
+
+
+
+//verificar se um valor esta dentro de um intervalo
+function verificaIntervalo (a,b){
+    if ( )
+}
+
+
+
+
+
+//verificar se o valor é par ou impar
+// let numero = 5;
+// function verificaImparOuPar (numero) {
+//     if (numero % 2 === 0){
+//         console.log("é par")
+//     } else {
+//         console.log("é impar")
+//     }
+// };
