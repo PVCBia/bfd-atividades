@@ -157,3 +157,104 @@ function verificaIntervalo (a,b){
 //         console.log("é impar")
 //     }
 // };
+
+
+#aula 11#
+vocabulario: instancia= objetos pre determinados/ vetor= array/ desestruturação= desempacotar objetos
+
+null pointer/ exception/ null safety = refenciar mesmo qando vazio (ex: perfil?.nome?)
+
+#desestruturação de objetos:#
+ex:
+const livro= {
+ titulo: "js lindo",
+ autor: "fulano"
+}
+cosnt  {titulo, autor} = livro; //desestruturando
+
+ex2:
+const arr= [10,12,30,40]
+const [a,b] = arr;  //a=10, b=20
+
+ex3:
+//pulando itens
+cosnt [, , x] = arr; lulando itens e criando "x"
+
+ex4:
+... = rest(resto dos itens)
+const [head, ... tail] = arr; //pega o primeiro e o ultimo
+
+ex5:
+troca de variaveis/ valores
+let m= 1, n= 2;
+[m,n] = [n,m]
+
+ex6:
+const user = {
+    id: "10",
+    name_: joao,
+    city: recife
+}
+newName = "teste"
+const {id, name_: newName} = user;
+const {state = "PE"} = user;
+
+#spead operator# "..."
+ex7:
+const num1 = [1,2];
+const num2 = [4,6];
+
+const todosNums = [...num1, ...num2];
+
+//criar copia
+const copia = [num1];
+
+//inserir num1 em nova variavel de dados
+const novo = [0,1,2,...num1, 3,4];
+
+//pegar o mumero maior
+Math.max(...num1, ...num2) 
+
+const items = [..."bia"]
+console.log(items)
+
+- exercicio em sala:
+// const items = [..."bia"]
+// console.log(items)
+
+//objeto: pessoa, profissao
+const identidade = {
+
+  id: "joao",
+  idade: "12"
+}
+const profissao = {
+
+  trabalho: "professor"
+}
+
+//ciar um terceiro objeto que junta os dois primeiros
+
+const novoRegistro = {...identidade, ...profissao}
+console.log(novoRegistro)
+----------
+
+## criar construtores (object constructor)
+
+function Person(primeiro, ultimo, idade, olhos) {
+  this.primeiro = "primeiro",
+  this.ultimo = "ultimo",
+  this.idade = "idade",
+  this.olhos = "olhos",
+}
+
+const pessoa1 = new Person ("bia", "carneiro", "32", "castanho");
+--------
+
+const carro = {
+  marca: "tesla",
+  modelo: "modelo 3"
+}
+
+for (const chave in carro)
+console.log {$ ...  }
