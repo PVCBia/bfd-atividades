@@ -258,3 +258,103 @@ const carro = {
 
 for (const chave in carro)
 console.log {$ ...  }
+
+##Aula 12
+//protocolo // https e http
+
+
+const frutas = ["maçã", "banana", "uva"]; 
+
+// for clássico
+// for(... ; ...; ){}
+for (let i = 0; i < frutas.length; i++){
+  console.log(`Fruta ${i}: ${frutas[i]}`)
+}
+//com while:
+let i =0;
+while (i<frutas.length){
+  console.log(`Fruta ${i}: ${frutas[i]}`)
+  i++
+}
+
+
+// com iteração
+const arrayNumbers = []
+for(let value = 10; value <= 100; value += 10){
+  arrayNumbers.push(value)
+  console.log('Valor:' + value)
+} //iterando, pulando de 10 em 10
+
+
+//for of
+// for(... of ...){}
+for (let fruta of frutas){
+  console.log(fruta)
+}
+
+
+// for in  
+const frutaObj = {
+  nome: "laranja",
+  tipo: "cítrica",
+  valor: 5
+}
+
+for (chave in frutaObj){
+  console.log(chave + " - " + frutaObj[chave])
+}
+
+const numbers = [10, 20, 30, 40]
+for (const index in numbers){
+  console.log(numbers[index])
+}
+
+const usuario = {
+  nome:"Leticia",
+  idade: 30
+}
+
+//for.forEach(()=>{});
+frutas.forEach((fruta, index)=>{
+  console.log(fruta);
+  console.log(index);
+  console.log(`Fruta: ${fruta}`)
+});   
+
+// const frutasEmMaiusculo = frutas.map((fruta)=>{ fruta.toUpperCase() });
+// console.log(frutasEmMaiusculo)
+
+// //JSX
+// function ListaFrutas() {
+//   const frutas = ["maçã", "banana", "uva"]; 
+//   return (
+//     <ul>
+//       {frutas.map((fruta, index) => (
+//         <li key = "{index}">{fruta}</li>
+//       ))}
+//     </ul>
+//   );
+// }
+
+//iteração funcional
+const numeros = [1,2,3,4];
+
+//map - cada elemento dobrado
+//tranformar
+const dobrados = numeros.map(n=> n * 2)
+
+//filtro
+const pares = numeros.filter(n=> n % 2 === 0)
+
+//reduce                                     //0 é o valor inicial do acumulador
+const soma = numeros.reduce((acumulador, n)=> acumulador + n, 0)
+
+//criar uma arrow function que retorna o cubo de um valor
+//for.forEach(()=>{});
+
+const retornaCubo = numeros.map(n=> n * n * n)
+console.log(retornaCubo)
+
+function conectar(host = "localhost", porta = "8080){
+  //todo  
+}
