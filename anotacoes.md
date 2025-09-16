@@ -346,7 +346,8 @@ const dobrados = numeros.map(n=> n * 2)
 //filtro
 const pares = numeros.filter(n=> n % 2 === 0)
 
-//reduce                                     //0 é o valor inicial do acumulador
+//reduce  
+acumulador, item, index e array                  //0 é o valor inicial do acumulador
 const soma = numeros.reduce((acumulador, n)=> acumulador + n, 0)
 
 //criar uma arrow function que retorna o cubo de um valor
@@ -358,3 +359,184 @@ console.log(retornaCubo)
 function conectar(host = "localhost", porta = "8080){
   //todo  
 }
+
+
+
+####Aula 13####
+
+user.foreach((item)=>{
+    if()
+})
+
+
+const users = [
+  {
+    nome: "Ana Silva",
+    idade: 28,
+    contato: {
+      email: "ana.silva@email.com",
+      telefone: "11987654321"
+    },
+    cidade: "São Paulo"
+  },
+  {
+    nome: "Bruno Santos",
+    idade: 35,
+    contato: {
+      email: "bruno.santos@email.com",
+      telefone: "21912345678"
+    },
+    cidade: "Rio de Janeiro"
+  },
+  {
+    nome: "Carla Oliveira",
+    idade: 42,
+    contato: {
+      email: "carla.oliveira@email.com",
+      telefone: "31998765432"
+    },
+    cidade: "Belo Horizonte"
+  },
+  {
+    nome: "Daniel Lima",
+    idade: 23,
+    contato: {
+      email: "daniel.lima@email.com",
+      telefone: "71987654321"
+    },
+    cidade: "Salvador"
+  },
+  {
+    nome: "Elisa Costa",
+    idade: 30,
+    contato: {
+      email: "elisa.costa@email.com",
+      telefone: "81912345678"
+    },
+    cidade: "Recife"
+  },
+  {
+    nome: "Felipe Almeida",
+    idade: 50,
+    contato: {
+      email: "felipe.almeida@email.com",
+      telefone: "51998765432"
+    },
+    cidade: "Porto Alegre"
+  },
+  {
+    nome: "Gabriela Fernandes",
+    idade: 25,
+    contato: {
+      email: "gabriela.fernandes@email.com",
+      telefone: "61987654321"
+    },
+    cidade: "Brasília"
+  },
+  {
+    nome: "Henrique Rocha",
+    idade: 38,
+    contato: {
+      email: "henrique.rocha@email.com",
+      telefone: "41912345678"
+    },
+    cidade: "Curitiba"
+  },
+  {
+    nome: "Isabela Pereira",
+    idade: 33,
+    contato: {
+      email: "isabela.pereira@email.com",
+      telefone: "85998765432"
+    },
+    cidade: "Fortaleza"
+  },
+  {
+    nome: "João Martins",
+    idade: 45,
+    contato: {
+      email: "joao.martins@email.com",
+      telefone: "11912345678"
+    },
+    cidade: "São Paulo"
+  }
+];
+
+// export default mockData;
+// users.foreach((item)=>{
+//     if(item.age>18){
+//         console.log(`O usuário ${item.name} é maior.`)
+//     }
+// });
+
+//construa uma fução que retorne quantos usuarios que moram em cada estado
+
+//passar por cada item
+//iterar se for positivo para o estado escolhido
+
+//reduce
+//abre e fecha chave
+// users.forEach(element => {
+//     if(element.cidade === "São Paulo"){
+//         const iteraCidade = users.reduce((acc,users )=> acc + users , 0)
+//         console.log(iteraCidade);
+//     }
+    
+// });
+
+const contaCidades = users.reduce((acc, user)=>{
+    //
+    //fallback :    acc[users.cidade] = (acc[user.cidade] || 0 ) + 1;
+    //return acc;
+    if(!acc[user.cidade]){
+        acc[user.cidade] = 0;
+    }
+    acc[user.cidade] += 1;
+    return acc;
+},{});
+console.log(contaCidades);
+//  {} = é o valor inicial do objeto
+
+//faça a média das idades
+//soma e divide pelo user.length
+// const somaIdades = users.reduce((acc, user) =>{
+//     return acc + user.idade;
+// }, 0);
+// const mediaIdade = somaIdades / users.length;
+//ou
+const somaIdades = users.reduce((acc, user, index, array) =>{
+    acc += user.idade;
+    if(index === array.length-1){
+        return acc/array.length
+    }
+    return acc;
+    }, 0);
+
+//filter
+const numeros = [1,2,3,4,5];
+
+const maiorQuevinteeCinco = users.filter(user => user.idade > 25);
+console.log(maiorQuevinteeCinco.length)
+
+
+function saudacao(nome){
+    const mensagem = `Olá, ${nome}`
+
+    function mostrarSaudacao(){
+        console.log(mensagem);
+    }
+    return mostrarSaudacao;
+
+}
+
+const olaHeitor = saudacao("Heitor");
+olaHeitor();
+
+////////
+//template literals = interpolação de string  variáveis
+async e await
+try, catch - then, catch, finally
+
+//ex pra framework:
+setLista([,,,lista, novoItem]);  //spred operator
+//não modifica a lista inicial, cria uma nova
