@@ -540,3 +540,77 @@ try, catch - then, catch, finally
 //ex pra framework:
 setLista([,,,lista, novoItem]);  //spred operator
 //não modifica a lista inicial, cria uma nova
+
+
+-------------------------------------
+## Aula 14 ##
+//endpoints/ recurços ou rotas/ middle ware/ query string/ 
+
+- pragimetech.com (API)
+- https://jsonplaceholder.typicode.com/
+
+JSON
+
+// //parse: strig json -> obj js
+// //stringfy: obj js -> strinh json
+
+// //EX1:
+// const usuario = {    //obj js
+//     id: 1,
+//     nome: "maria",
+//     ativo: true
+// }
+
+// const jsonString = JSON.stringify(usuario, null, 4);
+// console.log(jsonString);
+
+
+// //EX2:
+// const jsonRecebido = '{ id": 1, "nome": "maria", "ativo": true }';
+
+// try{
+//     const dados = JSON.parse(jsonRecebido)
+//     console.log(dados.nome)
+//     console.log(dados.ativo)
+// } catch (e){
+//     console.error("Erro a processar json:", e.message)
+// }
+
+//EX3:
+
+//GET
+async function buscarUsuarios(id) {
+    try{
+      const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+      if(!res.ok){
+        throw new Error(`Erro HTTP: ${res.status}`);
+      }
+      //console.log(res)   // vem as infos do pacote
+      const dados = await res.json();
+      console.log("Nome: ", dados.name)
+      //console.log(dados)
+
+    }catch(error){
+      if(error.name === "SyntaxError"){
+      console.error("Erro ao converter JSON:", error.message)
+      }
+      console.error("Erro ao buscar usuários:", error.message)
+    }
+}
+buscarUsuarios(1);  // (1) - usuario com id 1
+
+async function criarPost() {
+  const novoPost = {
+    title: "Meu teste",
+    body: "Meu conteudo",
+    userId: 1
+  };
+  const resposta = await fetch("https://jsonplaceholder.typicode.com/posts/",{
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringfy(novoPost)
+  });
+  const postCriado = await resposta.json();
+  console.log.log("Post criado: ", postCriado)
+}
+criarPost();
