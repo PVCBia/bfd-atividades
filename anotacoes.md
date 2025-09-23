@@ -614,3 +614,46 @@ async function criarPost() {
   console.log.log("Post criado: ", postCriado)
 }
 criarPost();
+/////////////////////////
+
+## Aula 15 ##
+//biblioteca node-localstorage
+//strigfy - transforma objetos JSON em strigs / parse - deixa o bjeto manipulável/ JSON() - para receber os objetos
+
+//then
+//async, await
+
+// async function getUsers() {
+//     try{}
+//     catch(err){}
+// };
+
+const { LocalStorage } = require("node-localstorage");
+const localStorage = new LocalStorage("./dados");
+
+async function carregarDados() {
+	try {
+		const [posts, comments, users] = await Promise.allSettled([
+			fetch("https://jsonplaceholder.typicode.com/posts").then((res) =>
+				res.json()
+			),
+			fetch("https://jsonplaceholder.typicode.com/comments").then((res) =>
+				res.json()
+			),
+			fetch("https://jsonplaceholder.typicode.com/users").then((res) =>
+				res.json()
+			),
+		]);
+		localStorage.setItem("posts", JSON.stringify(posts)); //armazena objetos
+
+		const postsSalvo = JSON.parse(localStorage.getItem("posts"));
+		postsSalvo.forEach((post) => {
+			console.log(post.title);
+		});
+
+		console.log(posts, comments, users);
+	} catch (erro) {
+		console.error("Erro ao carregar dados: ", erro);
+	}
+}
+carregarDados();
