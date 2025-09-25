@@ -792,3 +792,111 @@ const totalValor = meuCarrinho
 console.log(totalValor); 
 _______________________________________________________________________________________
 
+## Aula 16 ##
+
+//cd src
+
+- promise.all
+- promise.race
+- IIFE // (async () => {
+           }) ();
+  
+- nullish coalescing
+-------------------------------
+  src> services > /postServices
+                  /users
+       main
+       package.json
+
+
+postService:
+//criar uma função exportável
+export async function fetchPosts () {
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+      if(!response.ok) throw new Error('Erro ao buscar posts')
+    return await response.json();
+    } catch (error){
+        console.log(error);
+        return [];
+    }
+  }
+----------
+
+users:
+//criar uma função exportável
+export async function fetchUsers () {
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/users');
+      if(!response.ok) throw new Error('Erro ao buscar posts')
+    return await response.json();
+    } catch (error){
+        console.log(error);
+        return [];
+    }
+}
+----------
+
+main:
+import { fetchPosts } from "./services/postService.js";
+import { fetchUsers } from "./services/users.js";
+import { fetchComments } from "./services/comments.js";
+
+//usar promise.all e promise.race
+async function main() {
+	// const posts = await fetchPosts();
+	// console.log("Total de posts: ", posts.length);
+    try{
+        // promise.all
+        // requisições em paralelo
+        const [posts, users, comments] = await Promise.all([
+            fetchPosts(),
+            fetchUsers(),
+            fetchComments()
+        ]);  
+
+        //promise.race
+        // const primeiroRes = await Promise.race([
+        //     fetchPosts(),
+        //     fetchUsers()
+        // ]);
+        // if(Array.isArray(primeiroRes)&& primeiroRes[0]?.user.id !== undefined){
+        //     //fetchPosts venceu a corrida
+        // }
+
+        console.log("total de posts: ", posts.length);
+        console.log("total de users: ", users.length);
+        console.log("total de users: ", comments.length)
+
+        //primero autor de um post
+        //posts[0]
+        const primeiroAutor = 
+        users.find(user => user.id === posts[0]?.userId)?.name ?? 'Autor desconhecido' //nullish coalescing
+        console.log("autor do primeiro post: ", primeiroAutor);
+    }catch(error){
+        console.log("erro: ", error)
+    }
+}
+main();
+------------
+
+comments:
+//criar uma função exportável
+export async function fetchComments () {
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/comments');
+      if(!response.ok) throw new Error('Erro ao buscar posts')
+    return await response.json();
+    } catch (error){
+        console.log(error);
+        return [];
+    }
+  }
+
+
+-----------
+resultado:
+
+total de posts:  100
+total de users:  10
+autor do primeiro post:  Autor desconhecido
