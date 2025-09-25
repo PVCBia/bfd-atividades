@@ -657,3 +657,138 @@ async function carregarDados() {
 	}
 }
 carregarDados();
+_____________________________________________________________________________________
+atividade: Lista de Exercícios - JavaScript Fundamentals para React
+
+//Crie uma função que recebe um número como argumento. A função deve imprimir no console "Positivo" se o número for maior que zero, "Negativo" se for menor que zero, e "Zero" se for igual a zero.
+
+const arrayNumeros = [-2, -1, 0, 1, 2];
+function verificarNumero(numero) {
+    if (numero < 0) {
+      console.log("negativo")
+    } else if (numero > 0){
+      console.log("positivo")
+    } else{
+      console.log("zero")
+    }
+}
+
+verificarNumero(2); 
+verificarNumero(-2); 
+verificarNumero(0);
+console.log("\n");
+
+
+//Escreva um código que use um loop for para imprimir os números de 1 a 10 no console.
+for (let i = 1; i<= 10; i++){
+  console.log(i);
+}
+console.log("\n");
+
+
+//Dado um array de números, use um loop for e uma condição if para criar um novo array contendo apenas os números pares.
+const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const numerosPares = [];
+ for (let i = 0; i< numeros. length; i++){
+  if (numeros[i] %2 === 0){
+    numerosPares.push(numeros[i]);
+  }
+ }
+console.log(numerosPares);
+
+
+//Dado um array de nomes, use o método forEach para imprimir cada nome no console, precedido pela saudação "Olá, ".
+const nomes = ["Ana", "Bruno", "Carlos"];
+
+nomes.forEach(nome => {
+  console.log(`Olá, ${nome}`)
+});
+console.log("\n");
+
+
+//Use o método filter para criar um novo array que contenha apenas os produtos com preço acima de R$ 500.
+const produtos1 = [
+    { nome: "Notebook", preco: 2500 },
+    { nome: "Mouse", preco: 80 },
+    { nome: "Teclado", preco: 120 },
+    { nome: "Monitor", preco: 950 },
+    { nome: "Cadeira", preco: 600 }
+];
+
+const produtosCaros = produtos1.filter(produto => produto.preco > 500);
+console.log(produtosCaros);
+console.log("\n");
+
+
+//Use o método map para criar um novo array que contenha apenas os nomes dos produtos do array da questão anterior.
+const produtos2 = [
+    { nome: "Notebook", preco: 2500 },
+    { nome: "Mouse", preco: 80 },
+    { nome: "Teclado", preco: 120 },
+    { nome: "Monitor", preco: 950 },
+    { nome: "Cadeira", preco: 600 }
+];
+
+const nomesDosProdutos = produtos2.map(produto => produto.nome);
+console.log(nomesDosProdutos); 
+console.log("\n");
+
+
+//Você recebeu uma string JSON com uma lista de usuários. Primeiro, converta a string JSON em um objeto JavaScript. Depois, use filter para criar um novo array contendo apenas os usuários ativos (isActive: true).
+const usuariosJson1 = `[
+    {"id": 1, "nome": "Alice", "isActive": true},
+    {"id": 2, "nome": "Bob", "isActive": false},
+    {"id": 3, "nome": "Charlie", "isActive": true}
+]`;
+
+const usuarios1 = JSON.parse(usuariosJson1);
+const usuariosAtivos = usuarios1.filter(usuario => usuario.isActive);
+console.log(usuariosAtivos);
+console.log("\n");
+
+
+//Usando a mesma string JSON da questão anterior, crie um novo array que contenha strings no formato "ID: [id], Nome: [nome]" para cada usuário.
+const usuariosJson2 = `[
+    {"id": 1, "nome": "Alice", "isActive": true},
+    {"id": 2, "nome": "Bob", "isActive": false},
+    {"id": 3, "nome": "Charlie", "isActive": true}
+]`;
+
+const usuarios2 = JSON.parse(usuariosJson2);
+const infoUsuarios = usuarios2.map(usuario => `ID: ${usuario.id}, Nome: ${usuario.nome}`);
+console.log(infoUsuarios);
+console.log("\n");
+
+
+//Dado um array de números, use o método reduce para calcular a soma total de todos os números.
+const valores = [10, 20, 30, 40, 50];
+
+const somaTotal = valores.reduce((acc,valorAtual) => acc + valorAtual, 0);
+console.log(somaTotal); 
+console.log("\n");
+
+
+//Você tem um JSON de carrinho de compras. Sua tarefa é calcular o valor total dos itens da categoria "Eletrônicos". Para isso, você precisará:
+
+//Converter a string JSON para um objeto.
+//Filtrar (filter) os itens que são da categoria "Eletrônicos".
+//Mapear (map) o array filtrado para obter um array apenas com os preços.
+//Reduzir (reduce) o array de preços para obter a soma total.
+
+const carrinhoJson = `[
+    {"nome": "Smartphone", "categoria": "Eletrônicos", "preco": 1500},
+    {"nome": "Tênis", "categoria": "Vestuário", "preco": 350},
+    {"nome": "Fone de Ouvido", "categoria": "Eletrônicos", "preco": 250},
+    {"nome": "Camiseta", "categoria": "Vestuário", "preco": 80},
+    {"nome": "Smartwatch", "categoria": "Eletrônicos", "preco": 800}
+]`;
+
+const meuCarrinho = JSON.parse(carrinhoJson);
+
+const totalValor = meuCarrinho
+    .filter(item => item.categoria === "Eletrônicos")
+    .map(item => item.preco)
+    .reduce((acc, precoAtual) => acc + precoAtual, 0);
+console.log(totalValor); 
+_______________________________________________________________________________________
+
