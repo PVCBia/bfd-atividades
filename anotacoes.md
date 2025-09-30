@@ -900,3 +900,87 @@ resultado:
 total de posts:  100
 total de users:  10
 autor do primeiro post:  Autor desconhecido
+---------------------------------
+
+aula 17
+
+JS
+
+//const titulo = document.getElementById('titulo');
+//const mensagem = document.getElementById('.mensagem');
+//const log = document.getElementById('log');
+const botaoAdicionar = document.getElementById('adicionar');
+const lista = document.querySelector('#minha-lista');
+const botaoRemover = document.querySelector('#remover');
+const msgVazia = document.getElementById('mensagem-vazio');
+const form = document.getElementById('form-lista');
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+});
+
+
+botaoAdicionar.addEventListener('click', () => {
+    //mensagem.classlist.toggle('destaque'. true);
+    //mensagem.classlist.toggle("p-2");
+    //titulo.textContent = 'DOM modificado!';
+    //log.innerHTML = 'Status: o log está aqui...';
+    //botao.setAttribute('src', '_nomedaimagem.jpg')
+
+   const newItem = document.createElement('li');
+   newItem.textContent = `Item ${lista.children.length + 1}`;
+   lista.appendChild(newItem);
+   verificarListaVazia()
+});
+
+botaoRemover.addEventListener('click', () => {
+    const ultimoItem = lista.lastElementChild;
+    if(ultimoItem){
+        lista.removeChild(ultimoItem);
+    };
+    verificarListaVazia()
+});
+
+function verificarListaVazia(){
+    if(lista.children.length === 0){
+        msgVazia.classList.remove('hidden')
+    }else{
+        msgVazia.classList.add('hidden')
+    }
+};
+--------
+HTML
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body>
+		<h1>Inserir itens da lista</h1>
+		<p id="mensagem-vazio" class="md-4 hidden">Não há mais itens</p>
+		<ul id="minha-lista" class="list-disc pl-6 mb-4">
+			<li class="item-lista">Item 1</li>
+			<li class="item-lista">Item 2</li>
+			<li class="item-lista">Item 3</li>
+		</ul>
+		<form id="form-lista">
+			<button
+				id="adicionar"
+				class="bg-blue-500 hover:bg-blue-600 text white font-semibold py-2 px-4 rounded"
+			>
+				Adicionar Item
+			</button>
+			<button
+				id="remover"
+				class="bg-blue-500 hover:bg-blue-600 text white font-semibold py-2 px-4 rounded"
+			>
+				Remover item
+			</button>
+		</form>
+
+		<script src="aula17.js"></script>
+	</body>
+</html>
