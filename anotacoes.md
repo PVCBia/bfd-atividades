@@ -984,3 +984,70 @@ HTML
 		<script src="aula17.js"></script>
 	</body>
 </html>
+---------------------------------------------
+## termimal ##
+derrubar: ctrl c / 
+ativar: 1. cd _nome da pasta_ ou cd tab(autocompletar)  
+	    2. npm run dev
+
+App.jsx
+import { useEffect, useState } from 'react';
+import './App.css'
+
+function App() {
+  const [likes, setLikes] = useState(0);
+  const [input, setInput] = useState("Nada")
+  const [ultimaHora, setUltimaHora] = useState("")
+
+  function darLike(){
+    setLikes(likes +1) //  OU   setLikes(prevLikes => prevLikes + 1)  -forma mais atual
+        setUltimaHora(new Date().toLocaleTimeString());
+
+    console.log(likes)
+  }
+  function resetar(){
+    setInput("");
+    setLikes(0);
+  }
+
+  //Efeito colateral - ações indiretas
+  //alteração de título da página
+  useEffect( ()=>{
+    document.title = `Digitado: ${input} - Likes: ${likes}`;
+  }, [input, likes]
+  );
+
+    return (
+    <>
+    <div>Número de caracteres: {input.length}</div>
+    {/* Você digitou: {input} */}
+    <input type="text" value= {input} placeholder='Digite algo...'
+     onChange={event => setInput(event.target.value)}/>
+    <div style={{ color: likes >=4 ? 'red' : 'white' }}>Likes: {likes}</div>
+    <button onClick={darLike} disabled={likes >=4}>
+      {likes >= 4 ? "limite esgotado" : "Clicar"}
+    </button>
+
+    {likes >=4 && <p>Você atingiu o limite!</p>}
+
+    <button onClick={resetar} style={{ marginLeft: '10px' }} >Recomeçar</button>
+
+    <p>Último click: {ultimaHora || "Nenhuma ainda."} </p>
+
+    </>
+  )
+}
+
+export default App
+-------------
+main.jsx
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
