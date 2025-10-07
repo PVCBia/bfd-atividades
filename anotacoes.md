@@ -986,6 +986,11 @@ HTML
 </html>
 ---------------------------------------------
 ## termimal ##
+vite: npm create vite@latest
+ cd _pasta_
+ npm i
+ npm run dev
+  
 derrubar: ctrl c / 
 ativar: 1. cd _nome da pasta_ ou cd tab(autocompletar)  
 	    2. npm run dev
