@@ -902,7 +902,7 @@ total de users:  10
 autor do primeiro post:  Autor desconhecido
 ---------------------------------
 
-aula 17
+## aula 17 ##
 
 JS
 
@@ -985,7 +985,9 @@ HTML
 	</body>
 </html>
 ---------------------------------------------
-## termimal ##
+## Aula 19 ##
+
+- termimal 
 vite: npm create vite@latest
  cd _pasta_
  npm i
